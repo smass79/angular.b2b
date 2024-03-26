@@ -1,0 +1,27 @@
+
+  <mat-toolbar-row fxHide fxShow.gt-sm class="container" fxLayout="row"  fxLayout.xs="row" fxLayoutAlign="space-between center">
+    <div class="main-menu" fxLayout="row" fxHide fxShow.gt-sm>
+        <a [routerLink]="['/home/']" mat-button class="mat-button">Home</a>
+        <a  mat-button [matMenuTriggerFor]="shop" class="mat-button" (click)="openMegaMenu()">Productos<mat-icon class="caret">arrow_drop_down</mat-icon></a>
+        <mat-menu #shop="matMenu" [overlapTrigger]="false" class="app-dropdown mega-menu">
+            <div >
+                <div  *ngFor="let content of menufinal" fxFlex="30" fxLayout="column" >  
+                    <a mat-menu-item routerLink="/"  ><b >{{content.catDescripcion}}</b></a>
+                    <mat-divider></mat-divider>                
+                    <div  *ngFor="let category of content.submenu; first as isFirst">
+
+                        <a  mat-menu-item  
+                            [routerLink]="['/home/products/' + titulo.scaSubCategoriaId +'/left-sidebar']" 
+                            *ngFor="let titulo of category" >{{titulo.scaDescripcion}}</a>
+                    </div>
+                </div>
+            </div>
+        </mat-menu>
+        <a [routerLink]="['/pages/about']" routerLinkActive="router-link-active"   mat-button class="mat-button">QUIENES SOMOS</a>
+        <a [routerLink]="['/pages/faq']" routerLinkActive="router-link-active"   mat-button class="mat-button">FAQ</a>
+        <a [routerLink]="['/pages/contact']" routerLinkActive="router-link-active"   mat-button class="mat-button">Contacto</a>
+    </div>
+  </mat-toolbar-row>
+
+
+

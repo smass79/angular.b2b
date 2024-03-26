@@ -1,0 +1,83 @@
+<app-breadcrumb [title]="'Faq'" [breadcrumb]="'Faq'"></app-breadcrumb>
+
+<div class="faq sec-padding">
+  <div class="container">
+    <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="start start"  class="p-0">
+        <div fxFlex="100" fxFlex.gt-sm="50" class="questions">
+            <div class="faq-wrap">
+                <mat-accordion>
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <span>{{ faq01titulo }}</span>
+                        </mat-panel-title>
+                      </mat-expansion-panel-header>
+                      <p>
+                        {{ faq01bajada }}                    </p>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                              <span>{{ faq02titulo }}</span>
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <p>
+                          {{ faq02bajada }}                         </p>
+                      </mat-expansion-panel>
+                      <mat-expansion-panel>
+                          <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                <span>{{ faq03titulo }}</span>
+                            </mat-panel-title>
+                          </mat-expansion-panel-header>
+                          <p>
+                            {{ faq03bajada }}                            </p>
+                        </mat-expansion-panel>
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                              <mat-panel-title>
+                                  <span>{{ faq04titulo }}</span>
+                              </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <p>
+                              {{ faq04bajada }}                                      </p>
+                          </mat-expansion-panel>
+                  </mat-accordion>
+            </div>
+        </div>
+        <div fxFlex="100" fxFlex.gt-sm="50" class="faq-form">
+            <div class="text-wrap">
+              <div class="title">
+                  <h3>Dejanos tu consulta</h3>
+              </div>
+                <p>Si tu consulta no esta en nuestra sección de FAQ o bien queres que te contactemos para que te visite un vendedor, completa el siguiente formulario .</p>
+                    <form fxLayout="row wrap">
+                        <div  fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+                            <mat-form-field class="w-100">
+                                <input matInput placeholder="Your Name (required)" #name="ngModel" ngModel name="name" required>
+                                <mat-error *ngIf="name.invalid">Please enter a valid message</mat-error>
+                              </mat-form-field>
+                        </div>
+                        <div  fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+                            <mat-form-field class="w-100">
+                                <input matInput placeholder="Your Email (required)" #email="ngModel" ngModel name="email" required>
+                                <mat-error *ngIf="email.invalid">Please enter a valid message</mat-error>
+                              </mat-form-field>
+                        </div>
+                        <div  fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+                            <mat-form-field class="w-100">
+                                <input matInput placeholder="Subject" #subject="ngModel" ngModel name="subject" required>
+                                <mat-error *ngIf="subject.invalid">Please enter a valid message</mat-error>
+                              </mat-form-field>
+                        </div>
+
+                        <div class="button-wrap" fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+                            <button class="btn-project" mat-raised-button color="primary" type="submit">GET A QUOTE</button>
+                          </div>
+                        </form>
+            </div>
+        </div>
+    </div>
+
+  </div>
+</div>

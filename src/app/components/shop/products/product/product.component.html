@@ -1,0 +1,55 @@
+<div class="product-item"  >
+  <mat-card fxLayout="column">
+    <div class="product-img">
+        <a class="product-link" [routerLink]="['/home/product', product.id]">
+
+          <img *ngIf="loading" src="/assets/images/loading.gif" class="gif" alt="loading" />
+          <img [src]="product.pictures[0].big" 
+                  alt="" 
+                  onError="this.src='assets/images/product/small/headphone1/headphone1.png'" 
+                  (load)="onLoad()"
+                  [hidden]="loading"
+                  >
+          <img *ngIf="product.OfertaID!=0"
+            src="/assets/images/oferta.png" 
+            id="img2" 
+            style="position: absolute;left: 0px;top: 0px;" />
+
+       </a>
+       <div class="icons" fxLayout="column">
+         <a (click)="addToWishlist(product)" class="hvr-icon-pulse-shrink"><mat-icon class="hvr-icon mat-icon-lg mat-icon material-icons mr-10">favorite_border</mat-icon></a>
+         <a (click)="openProductDialog(product)" class="hvr-icon-pulse-shrink"><mat-icon class="hvr-icon">remove_red_eye</mat-icon></a>
+         <a (click)="addToCompare(product)" class="hvr-icon-pulse-shrink"><mat-icon class="hvr-icon">cached</mat-icon></a>
+        </div>
+    </div>
+     <div class="product-info-wrapper">
+        <span class="category">{{product.category}}</span>
+        <div 
+      
+        >
+    
+
+           <h4>{{product.name}} </h4>
+        </div>
+        <span class="category">SKU: {{product.SKU}}</span>
+
+
+         <div *ngIf="product.price>0" class="price-wrap" fxLayout="row" fxLayoutAlign="space-between center">
+            <p style="font-size:14px" >
+              <del *ngIf="product.hasBonif == true && product.OfertaID==0" >{{product.salePrice | currency:productsService?.currency:'symbol'}}</del></p>
+            <p >{{product.price | currency:productsService?.currency:'symbol'}}</p>
+         </div>
+         <div class="price-wrap" fxLayout="row" fxLayoutAlign="space-between center" *ngIf="product.price>0">
+            Cant. <input type="number"   
+                         size="8" 
+                         style="background-color : #eeeeee;
+                                text-align: center;
+                                width: 100px;
+                                height: 20px;"  
+                         #qtty />
+            <a (click)="addToCart(product,qtty.value)" ><mat-icon class="mat-icon-lg mat-icon material-icons">shopping_cart</mat-icon></a>
+         </div>
+         
+     </div>
+  </mat-card>
+</div>

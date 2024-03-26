@@ -1,0 +1,269 @@
+<app-breadcrumb [title]="'Ingresar'" [breadcrumb]="'Ingresar'"></app-breadcrumb>
+
+<div class="my-account sec-padding">
+  <div class="container">
+      <mat-card fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="start start"  class="p-0">
+          <div class="my-account-wrap p-0" fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="start start" >
+
+            <div class="login-wrapper pr-50" fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" *ngIf="this.isLogged == true" >
+              <div class="title">
+                <h3>Cambiar Password</h3>
+              </div>
+              <form fxLayout="row wrap" 
+                    [formGroup]="changueForm" 
+                    (ngSubmit)="onChanguePassword()">
+                  <div  fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+                      <mat-form-field class="w-100">
+                        <input matInput 
+                              type="password"
+                              placeholder="Password Actual (required)" 
+                              #passwordActual
+                              name="passwordActual" 
+                              required
+                              formControlName="passwordActual">
+                        <mat-error *ngIf="passwordActual.invalid">Ingrese un dato válido</mat-error>
+                        </mat-form-field>
+                  </div>
+                  <div  fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+                      <mat-form-field class="w-100">
+                          <input matInput 
+                                  type="password"
+                                  placeholder="Nuevo Password (required)" 
+                                  #passwordNew
+                                  name="passwordNew" 
+                                  required
+                                  formControlName="passwordNew">
+                          <mat-error *ngIf="passwordNew.invalid">Ingrese un dato válido</mat-error>
+                        </mat-form-field>
+                  </div>
+                  <div  fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+                    <mat-form-field class="w-100">
+                        <input matInput 
+                                placeholder="RE Nuevo Password (required)" 
+                                type="password"
+                                #passwordNewRe
+                                name="passwordNewRe" 
+                                required
+                                formControlName="passwordNewRe">
+                        <mat-error *ngIf="passwordNewRe.invalid">Ingrese un dato válido</mat-error>
+                      </mat-form-field>
+                </div>
+                  <div class="button-wrap" fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+                      <button    
+
+                              class="btn-project"
+                              mat-raised-button 
+                              color="primary" 
+                              type="submit" 
+                              [disabled]="!changueForm.valid || this.logeando==true">
+                              
+                       
+                              Cambiar</button>
+     
+
+                    </div>
+                  </form>
+          </div>
+
+          <div class="register-wrapper pr-15" fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" *ngIf="this.isLogged == true">
+            <ngx-spinner type="square-jelly-box"  >
+              <p style="color: white" > {{sendMensaje}}... </p>
+            </ngx-spinner>
+
+              <div class="title">
+                  <h3>Mi Cuenta</h3>
+                </div>
+
+                <div class="register-body" *ngIf="!enviado">
+
+                  <form fxLayout="row wrap"
+                         [formGroup]="mydataForm" 
+                        
+                  >
+                    <div  fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+                        <mat-form-field class="w-100">
+                            <input matInput placeholder="Nombre" 
+                                    #mynombre
+                                    name="mynombre"
+                                    formControlName="mynombre" 
+                                    required>
+                          </mat-form-field>
+                    </div>
+
+                      <div  fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+                          <mat-form-field class="w-100">
+                              <input matInput placeholder="Dirección (requerido)" 
+                                    #mydireccion
+                                    name="mydireccion"
+                                    formControlName="mydireccion" 
+                                    required>
+                            </mat-form-field>
+                      </div>
+                      <div  fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+                        <mat-form-field class="w-100">
+                            <input matInput placeholder="Ciudad - Provincia" 
+                                  #myciudad
+                                  name="myciudad"
+                                  formControlName="myciudad" 
+                                  required>
+                          </mat-form-field>
+                    </div>
+                    <div  fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+                      <mat-form-field class="w-100">
+                          <input matInput placeholder="Telefono" 
+                                #mytelefono
+                                name="mytelefono"
+                                formControlName="mytelefono" 
+                                required>
+                        </mat-form-field>
+                  </div>
+                      <div class="button-wrap" fxFlex="100" fxFlex.gt-sm="100" ngClass.sm="mt-1" ngClass.xs="mt-1">
+                        
+                        <a  
+                        (click)="downloadList()"
+                        href="javascript:void(0)"
+                        routerLinkActive="router-link-active" ><mat-icon>cloud_download</mat-icon>Descargar Lista</a>
+
+
+        
+                          &nbsp;    
+                          &nbsp;    
+                          &nbsp;    
+                          
+                  
+                          <a  [routerLink]="['/pages/deuda']" routerLinkActive="router-link-active" ><mat-icon>payment</mat-icon>Ver Cuenta Corriente</a>
+
+                                  
+                        </div>
+                      </form>
+
+                      
+                </div>
+                <div class="register-body" *ngIf="enviado">
+                  <p style="text-align:center"><span style="color:#27ae60"><span style="font-size:26px">Operación Exitosa</span></span></p>
+                  <br>
+                  <p style="text-align:center"><span style="font-size:24px">Hemos enviado un mail a tu casilla de correo. </span></p>
+                  <br>
+                  <p style="text-align:center"><span style="font-size:24px">Ingresa a tu cuenta de mail para finalizar la registración. </span></p>
+                  <br>
+                  <p style="text-align:center"><span style="font-size:24px">En caso de no encontrar el mail, revisa en la bandeja de correos no deseados. </span></p>
+                  <br>
+                  <p style="text-align:center"><span style="font-size:24px">Gracias!!</span></p>
+
+                  <p>&nbsp;</p>
+                </div>
+        </div>
+
+              <div class="login-wrapper pr-50" fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" *ngIf="this.isLogged == false" >
+                  <div class="title">
+                    <h3>Login</h3>
+                  </div>
+                  <form fxLayout="row wrap" 
+                        [formGroup]="profileForm" 
+                        (ngSubmit)="onSubmit()">
+                      <div  fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+                          <mat-form-field class="w-100">
+                              <input matInput 
+                                      placeholder="Nombre de usario o mail (requerido)" 
+                                      #username
+                                      name="username" 
+                                      required
+                                      formControlName="username">
+                              <mat-error *ngIf="username.invalid">Ingrese un dato válido  </mat-error>
+                            </mat-form-field>
+                      </div>
+                      <div  fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+                          <mat-form-field class="w-100">
+                              <input matInput 
+                                      placeholder="Password (required)" 
+                                      #email
+                                      name="email" 
+                                      required
+                                      formControlName="password">
+                              <mat-error *ngIf="email.invalid">Ingrese un dato válido</mat-error>
+                            </mat-form-field>
+                      </div>
+                      <div class="button-wrap" fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+                          <button    
+
+                                  class="btn-project"
+                                  mat-raised-button 
+                                  color="primary" 
+                                  type="submit" 
+                                  [disabled]="!profileForm.valid || this.logeando==true">
+                                  
+                           
+                                  Log in</button>
+         
+
+                        </div>
+                      </form>
+              </div>
+                
+              <div class="register-wrapper pr-15" fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" *ngIf="this.isLogged == false">
+                  <ngx-spinner type="square-jelly-box"  >
+                    <p style="color: white" > {{sendMensaje}}... </p>
+                  </ngx-spinner>
+
+                    <div class="title">
+                        <h3>Registrarse</h3>
+                      </div>
+
+                      <div class="register-body" *ngIf="!enviado">
+
+                        <p>Ingrese la direccion de mail con la cual esta registrado en nuestra empresa</p>
+                        <form fxLayout="row wrap"
+                               [formGroup]="accountForm" 
+                              (ngSubmit)="onGetAccount()"
+                        >
+                          <div  fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+                              <mat-form-field class="w-100">
+                                  <input matInput placeholder="Numero de cliente (requerido)" 
+                                          #nrousuario
+                                          name="nrousuario"
+                                          formControlName="nrousuario" 
+                                          required>
+                                  <mat-error *ngIf="nrousuario.invalid">Ingrese un numero de cliente válido</mat-error>
+                                </mat-form-field>
+                          </div>
+
+                            <div  fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+                                <mat-form-field class="w-100">
+                                    <input matInput placeholder="Nombre de usario o mail (requerido)" 
+                                          #usermail
+                                          name="usermail"
+                                          formControlName="usermail" 
+                                          required>
+                                    <mat-error *ngIf="usermail.invalid">Ingrese un usuario o mail válido</mat-error>
+                                  </mat-form-field>
+                            </div>
+
+                            <p>Recibira un mail desde donde debera confirmar el registro.</p>
+                            <div class="button-wrap" fxFlex="100" fxFlex.gt-sm="100" ngClass.sm="mt-1" ngClass.xs="mt-1">
+                                <button class="btn-project" 
+                                        mat-raised-button color="primary" 
+                                        type="submit"
+                                        [disabled]="!accountForm.valid || this.enviando==true"
+                                        >Obtener Cuenta</button>
+                              </div>
+                            </form>
+                      </div>
+                      <div class="register-body" *ngIf="enviado">
+                        <p style="text-align:center"><span style="color:#27ae60"><span style="font-size:26px">Operación Exitosa</span></span></p>
+                        <br>
+                        <p style="text-align:center"><span style="font-size:24px">Hemos enviado un mail a tu casilla de correo. </span></p>
+                        <br>
+                        <p style="text-align:center"><span style="font-size:24px">Ingresa a tu cuenta de mail para finalizar la registración. </span></p>
+                        <br>
+                        <p style="text-align:center"><span style="font-size:24px">En caso de no encontrar el mail, revisa en la bandeja de correos no deseados. </span></p>
+                        <br>
+                        <p style="text-align:center"><span style="font-size:24px">Gracias!!</span></p>
+
+                        <p>&nbsp;</p>
+                      </div>
+              </div>
+        </div>
+      </mat-card>
+
+  </div>
+</div>

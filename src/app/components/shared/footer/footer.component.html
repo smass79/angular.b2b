@@ -1,0 +1,74 @@
+<footer class="footer sec-padding">
+  <div class="container">
+      <div class="footer-wrapper" fxLayout="row wrap" fxLayoutAlign="space-between start">
+        <div fxFlex="100" fxFlex.gt-sm="30" fxFlex.sm="50" class="footer-widget about-widget"><a class="logo" href="index.html"><img src="/assets/images/logo-02-01.png" alt="Awesome Image"></a>
+          <p>Nuestra atención personalizada, la calidad de productos, el servicio eficiente, la competitividad de precios, el amplio surtido, el stock permanente, y la seriedad , nos diferencia y destaca, posicionándonos en la cima del rubro.</p>
+          <br>
+          <div class="link"><a href="https://liberasoft.com.ar/" target="_blank"> © LiberaSOFT EPR | Todos los Derechos Reservados</a> </div>
+        </div>
+
+          <div fxFlex="100" fxFlex.gt-sm="23" fxFlex.sm="50" ngClass.xs="mt-2" class="footer-widget links-widget links-widget-pac">
+            <div class="title">
+              <h5>Servicios</h5>
+            </div>
+            <div class="row">
+                <ul>
+                  <li><a href="#">Home</a></li>
+                  <li><a href="/pages/about">Quienes Somos</a></li>
+                  <li><a href="/pages/faq">FAQ</a></li>
+                  <li><a href="/pages/contact">Contactos</a></li>
+                  <li><a href="#"></a></li>
+                  <li><a href="#"></a></li>
+                </ul>
+            </div>
+          </div>
+
+
+        <div fxFlex="100" fxFlex.gt-sm="23" fxFlex.sm="50" ngClass.xs="mt-2" class="footer-widget subscribe-widget">
+          <div class="title">
+            <h5>Suscribirse al Newsletter</h5>
+          </div>
+          <form action="#">
+            <p>Obtenga las últimas actualizaciones y ofertas.</p>
+            <div fxLayout="column" class="newsletter-widget">
+              <input type="text" placeholder="Ingrese su dirección de mail">
+              <button mat-raised-button color="primary" type="submit" class="ped-btn-footer">SUSCRIBIRME</button>
+            </div>
+          </form>
+        </div>
+
+
+          <div fxFlex="100" fxFlex.gt-sm="23" fxFlex.sm="50" ngClass.sm="mt-2" ngClass.xs="mt-2" class="footer-widget subscribe-widget">
+            <div class="title">
+              <h5>Contactanos</h5>
+            </div>
+            <div fxLayout="row" class="tel-box">
+              <div class="icon"><i class="fa fa-map-marker"></i></div>
+              <div class="text">
+                <p>{{ direccion }}</p>
+              </div>
+            </div>
+            <div fxLayout="row" class="tel-box">
+              <div class="icon"><i class="fa fa-phone"></i></div>
+              <div class="text">
+                <p>{{ telefono }}</p>
+              </div>
+            </div>
+            <div fxLayout="row" class="tel-box">
+              <div class="icon"><i class="fa fa-envelope"></i></div>
+              <div class="text">
+                <p><a href="#">{{ mail }}</a></p>
+              </div>
+
+            </div>
+          </div>
+      </div>
+  </div>
+
+
+
+</footer>
+
+  <a [href]="this.nrowasap" class="float" target="_blank">
+    <i class="fa fa-whatsapp my-float"></i>
+  </a>

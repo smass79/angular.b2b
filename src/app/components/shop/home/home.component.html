@@ -1,0 +1,100 @@
+
+<div>
+  <ngx-skeleton-loader
+            *ngIf="!contentLoaded"
+              [theme]="{ 'border-radius': '0', height: '550px'  }"
+              count="1"
+            ></ngx-skeleton-loader>
+  <app-main-carousel *ngIf="contentLoaded" [slides]="slides"></app-main-carousel>
+</div>
+
+<div class="home-1-wrap">
+
+  <div class="container">
+      <div fxLayout="row wrap" class="info-bar" >
+        
+        <div class="card-wrap" fxFlex="100" fxFlex.gt-md="25" fxFlex.gt-xs="50" >
+          <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center" >
+            <ngx-skeleton-loader  [theme]="{ width: '80px', height: '80px' }" appearance="circle" animation="progress" *ngIf="!contentLoaded"></ngx-skeleton-loader>
+            <mat-icon mat-stroked-button color="primary" class="mat-icon-xlg  m-0" *ngIf="contentLoaded">card_giftcard</mat-icon>
+            <div class="content">
+              <ngx-skeleton-loader
+              *ngIf="!contentLoaded"
+                count="2"
+                [theme]="{ 'border-radius': '0', width: '100px', height: '15px' }"
+              ></ngx-skeleton-loader>
+              <p *ngIf="contentLoaded">MÁS STOCK</p>
+              <span *ngIf="contentLoaded" class="text-muted m-0">Variedad y stock permanente todo el año</span>
+            </div>
+          </mat-card>
+        </div>
+        <div class="card-wrap" fxFlex="100" fxFlex.gt-md="25" fxFlex.gt-xs="50">
+          <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+            <ngx-skeleton-loader  [theme]="{ width: '80px', height: '80px' }" appearance="circle" animation="progress" *ngIf="!contentLoaded"></ngx-skeleton-loader>
+            <mat-icon mat-stroked-button color="primary" class="mat-icon-xlg  m-0" *ngIf="contentLoaded">local_shipping</mat-icon>
+            <div class="content">
+              <ngx-skeleton-loader
+              *ngIf="!contentLoaded"
+                count="2"
+                [theme]="{ 'border-radius': '0', width: '100px', height: '15px' }"
+              ></ngx-skeleton-loader>
+              <p *ngIf="contentLoaded">LOGÍSTICA</p>
+              <span class="text-muted m-0" *ngIf="contentLoaded">Envios garantizados a todo el país</span>
+            </div>
+          </mat-card>
+        </div>
+        <div class="card-wrap" fxFlex="100" fxFlex.gt-md="25" fxFlex.gt-xs="50">
+          <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+            <ngx-skeleton-loader  [theme]="{ width: '80px', height: '80px' }" appearance="circle" animation="progress" *ngIf="!contentLoaded"></ngx-skeleton-loader>
+            <mat-icon mat-stroked-button color="primary" class="mat-icon-xlg m-0" *ngIf="contentLoaded">monetization_on</mat-icon>
+            <div class="content">
+              <ngx-skeleton-loader
+              *ngIf="!contentLoaded"
+                count="2"
+                [theme]="{ 'border-radius': '0', width: '100px', height: '15px' }"
+              ></ngx-skeleton-loader>
+              <p *ngIf="contentLoaded">MEJOR PRECIO</p>
+              <span *ngIf="contentLoaded" class="text-muted m-0">Líderes en el rubro por precio y servicio</span>
+            </div>
+          </mat-card>
+        </div>
+        <div class="card-wrap" fxFlex="100" fxFlex.gt-md="25" fxFlex.gt-xs="50">
+          <mat-card class="light-block no-bd" fxLayout="row"  fxLayoutAlign="start center">
+            <ngx-skeleton-loader  [theme]="{ width: '80px', height: '80px' }" appearance="circle" animation="progress" *ngIf="!contentLoaded"></ngx-skeleton-loader>
+            <mat-icon mat-stroked-button color="primary" class="mat-icon-xlg m-0" *ngIf="contentLoaded">history</mat-icon>
+            <div class="content">
+              <ngx-skeleton-loader
+              *ngIf="!contentLoaded"
+                count="2"
+                [theme]="{ 'border-radius': '0', width: '100px', height: '15px' }"
+              ></ngx-skeleton-loader>
+              <p *ngIf="contentLoaded">SERVICIO</p>
+              <span *ngIf="contentLoaded" class="text-muted m-0">En 48hs armamos y despachamos tu pedido</span>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+      <div class="products-industrial sec-padding">
+          <mat-tab-group>
+            <mat-tab label="PRODUCTOS DESTACADOS">
+                    <app-product-carousel [product]="productosDestacados"></app-product-carousel>
+            </mat-tab>
+            <mat-tab label="ULTIMOS INGRESOS">
+                    <app-product-carousel [product]="productosIngresos"></app-product-carousel>
+            </mat-tab>
+            <mat-tab label="OFERTAS">
+                    <app-product-carousel [product]="productosOfertas"></app-product-carousel>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+    <!--
+        <app-banners [banners]="banners"></app-banners>
+    -->
+    </div>
+    <app-product-vertical [products]="productosIngresos"
+                          [productosDestacados]="productosDestacados"
+                          [productosUltimos]="productosIngresos"
+                          [productosOfertas]="productosOfertas"
+
+    ></app-product-vertical>
+</div>

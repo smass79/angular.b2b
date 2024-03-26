@@ -1,0 +1,182 @@
+<app-breadcrumb [title]="'Checkout'" [breadcrumb]="'Checkout'"></app-breadcrumb>
+
+<ngx-spinner type="square-jelly-box"  >
+  <p style="color: white" > Enviando pedido, aguarde por favor... </p>
+</ngx-spinner>
+
+<div class="container">
+  <div class="checkout sec-padding">
+      <div fxLayout="row wrap" class="">
+          <div class="billing-details  pr-15" fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50">
+            <div class="header-title">
+                <h2>Detalle de la compra</h2>
+            </div>
+
+              <form fxLayout="row wrap"
+                    [formGroup]="MydataForm" >
+                  <div  fxFlex="100" fxFlex.gt-md="100" fxFlex.md="100" class="mt-20 pr-5" ngClass.sm="mt-10" ngClass.xs="mt-10">
+                      <mat-form-field class="w-100">
+                          <input matInput 
+                                 placeholder="Cliente" 
+                                 name="name" 
+                                 formControlName="name"
+                                 required
+                                 disabled="true"
+                                 >
+                          <mat-error >Por favor ingrese un nombre válido</mat-error>
+                        </mat-form-field>
+                  </div>
+                  <!--
+                  <div  fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="pl-5 mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
+                      <mat-form-field class="w-100">
+                          <input matInput placeholder="Last name (required)" #email="ngModel" ngModel name="email" required>
+                          <mat-error *ngIf="email.invalid">Please enter a valid message</mat-error>
+                        </mat-form-field>
+                  </div>
+               
+                  <div  fxFlex="100" fxFlex.gt-sm="100" class="mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
+                      <mat-form-field class="w-100">
+                          <input matInput 
+                                placeholder="Company name (optional)" 
+                                formControlName="empresa" 
+                                name="empresa">
+                        </mat-form-field>
+                  </div>
+                   -->
+                  <div  fxFlex="100" fxFlex.gt-sm="100" class="mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
+                      <mat-form-field class="w-100">
+                          <input matInput 
+                                placeholder="Dirección" 
+                                name="address"
+                                formControlName="address" 
+                                [disabled]="true" >
+                          <mat-error >Por favor ingrese una dirección postal</mat-error>
+                        </mat-form-field>
+                  </div>
+                  <div  fxFlex="100" fxFlex.gt-sm="100" class="mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
+                      <mat-form-field class="w-100">
+                          <input matInput placeholder="Ciudad" 
+                                 name="ciudad"
+                                 formControlName="ciudad"
+                                 [disabled]="true">
+                          <mat-error >Por favor ingrese una ciudad</mat-error>
+                        </mat-form-field>
+                  </div>
+                  <div  fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="mt-20 pr-5" ngClass.sm="mt-10" ngClass.xs="mt-10">
+                      <mat-form-field class="w-100">
+                          <input matInput 
+                                  placeholder="Provincia" 
+                                  name="state" 
+                                  formControlName="state"
+                                  required
+                                  [disabled]="true">
+                          <mat-error >Por favor ingrese una provincia</mat-error>
+                        </mat-form-field>
+                  </div>
+                  <div  fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="pl-5 mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
+                      <mat-form-field class="w-100">
+                          <input matInput 
+                                  placeholder="Código Postal" 
+                                  formControlName="postcode"
+                                  name="postcode" 
+                                  required
+                                  [disabled]="true">
+                          <mat-error >Por favor ingrese una código postal</mat-error>
+                        </mat-form-field>
+                  </div>
+                  <div  fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="mt-20 pr-5" ngClass.sm="mt-10" ngClass.xs="mt-10">
+                      <mat-form-field class="w-100">
+                          <input matInput 
+                                  placeholder="Email" 
+                                  formControlName="email"
+                                  name="email" required>
+                          <mat-error >Por favor ingrese un mail</mat-error>
+                        </mat-form-field>
+                  </div>
+                  <div  fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="pl-5 mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
+                      <mat-form-field class="w-100">
+                          <input matInput 
+                                placeholder="Teléfono" 
+                                formControlName="phone"
+                                name="phone" required>
+                          <mat-error >Por favor ingrese un teléfono</mat-error>
+                        </mat-form-field>
+                  </div>
+                  <div class="add-info">
+                    <h3>Informacion Adicional</h3>
+                    <p class="text-muted">Nota (opcional)</p>
+
+                  </div>
+                  <div  fxFlex="100" fxFlex.gt-sm="100" class="mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
+                      <mat-form-field class="w-100">
+                          <textarea placeholder="Post content" 
+                                    matInput rows="4" 
+                                    formControlName="nota"
+                                    name="nota"></textarea>
+                        </mat-form-field>
+                  </div>
+                  <div class="button-wrap" fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+                    <!--
+                    <button class="btn-project" mat-raised-button  color="primary" type="submit">Submit Review</button>
+                    -->  
+                    </div>
+              </form>
+          </div>
+          <div class="mainOrder-wrapper pl-15" fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50">
+            <div class="main-order " >
+              <div class="order-box">
+                  <div class="title-box">
+                      <div>Producto <span class="tl-amount"> Total</span></div>
+                  </div>
+                  <ul class="price-list" *ngIf='buyProducts.length'>
+                    <li *ngFor="let item of buyProducts">
+                       {{ item.product.name }} × {{ item.quantity }}
+                      <span>
+                       {{ item.product.price * item.quantity | currency:productService?.currency:'symbol' }}
+                        </span>
+                    </li>
+                </ul>
+                <ul class="quantity" *ngIf='buyProducts.length <= 0'>
+                  <li class="empty-checkout"> There are no products in cart </li>
+                 </ul>
+                <ul class="total-amount">
+                  <li>
+                    Total SIN IVA <span class="amount">{{ getTotal() | async | currency:productService?.currency:'symbol'}}</span>
+                  </li>
+<!--
+                  <li *ngIf='buyProducts.length'>
+                    Shipping
+                   <div class="shipping">
+                      <div class="shopping-option">
+                        <mat-radio-group>
+                          <mat-radio-button *ngFor="let payment of payments" [value]="payment">{{payment}}</mat-radio-button>
+                        </mat-radio-group>
+                      </div>
+
+                   </div>
+                  </li>
+-->
+              </ul>
+              <ul class="total">
+                <li>Total CON IVA <span class="count">{{ getTotalConIVA() | async | currency:productService?.currency:'symbol'}}</span></li>
+            </ul>
+            <!--
+            <div class="paymentFinal">
+              <mat-radio-group>
+                <mat-radio-button fxLayout="column" *ngFor="let payment of paymantWay" [value]="payment">{{payment}}</mat-radio-button>
+              </mat-radio-group>
+            </div>
+-->
+            <div class="order">
+              <button class="btn-project" 
+                      mat-raised-button color="primary" 
+                      (click)="EnviarPedido()"
+                      [disabled]="this.enviando==true">REALIZAR PEDIDO</button>
+            </div>
+               </div>
+          </div>
+          </div>
+
+       </div>
+    </div>
+</div>

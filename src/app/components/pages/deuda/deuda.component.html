@@ -1,0 +1,63 @@
+<app-breadcrumb [title]="'Cuenta Corriente'" [breadcrumb]="'Cuenta Corriente'"></app-breadcrumb>
+
+<ngx-skeleton-loader
+*ngIf="loading"
+  count="1"
+  [theme]="{ 'border-radius': '0', height: '400px' }"
+></ngx-skeleton-loader>
+
+
+<div class="container">
+  <div class="cart-wrapper sec-padding">
+     <div fxLayout="column" fxLayoutAlign="space-around center" *ngIf="!arr_documentos_final.length">
+        <mat-chip-list>
+           <mat-chip color="warn" selected="true" *ngIf="!loading" >NO TIENES DOCUEMTOS CARGADOS.</mat-chip>
+        </mat-chip-list>
+
+     </div>
+     <mat-card *ngIf="arr_documentos_final.length"  class="p-0">
+        <div class="mat-table cart-table">
+
+           <div *ngFor="let arr_tipos of arr_documentos_final"  >
+               <div class="mat-header-row">
+                  <div class="mat-header-cell">Tipo</div>
+                  <div class="mat-header-cell">Fecha</div>
+                  <div class="mat-header-cell">Nro</div>
+                  <div class="mat-header-cell">Importe</div>
+                  <div class="mat-header-cell">Pagado</div>
+                  <div class="mat-header-cell">Deuda</div>
+               </div>
+               <div *ngFor="let item of arr_tipos.docs"  class="mat-row">
+                  <div class="mat-cell">{{item.Tipo}} {{item.tptLetra}}</div>
+                  <div class="mat-cell">{{item.fvtFechaImpresion | date: 'dd/MM/yyyy' }}</div>
+                  <div class="mat-cell">{{item.fvtNroFactura}}</div>
+                  <div class="mat-cell">{{item.fvtTotal | number : '1.2-2' }}</div>
+                  <div class="mat-cell">{{item.cuvPagado | number : '1.2-2' }}</div>
+                  <div class="mat-cell price">{{item.Deuda | number : '1.2-2' }}</div>
+               </div>
+               <div class="mat-row">
+                  <div class="mat-cell"></div>
+                  <div class="mat-cell"></div>
+                  <div class="mat-cell"></div>
+                     <div class="mat-cell price">
+                     
+                        TOTAL {{arr_tipos.tptLetra}}: {{getTotal(arr_tipos.tptLetra)   | currency:productsService?.currency:'symbol'}}
+                     
+                     </div>
+               </div>
+           </div>    
+           <div class="mat-row">
+              <div class="mat-cell"></div>
+              <div class="mat-cell"></div>
+              <div class="mat-cell"></div>
+              <div class="mat-cell total">
+                 
+                    TOTAL: {{deudaTotal   | currency:productsService?.currency:'symbol'}}
+                 
+              </div>
+
+            </div>
+        </div>
+     </mat-card>
+  </div>
+</div>
